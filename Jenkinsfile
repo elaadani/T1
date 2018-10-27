@@ -1,8 +1,7 @@
 pipeline {
 
 	agent any
-	
-    currentBuild.result = "SUCCESS"
+    
 
     try {
 
