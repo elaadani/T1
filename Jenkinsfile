@@ -2,10 +2,7 @@ pipeline {
 
 	agent any
     
-
-    try {
-
-       stage('Test'){
+    stage('Test'){
 
          print "Comprobando la instalación de git"
 
@@ -31,15 +28,7 @@ pipeline {
 
        }
 
-    }
 
-    catch (err) {
 
-        currentBuild.result = "FAILURE"
-
-        echo 'Error Build docker o Push heroku'
-       
-        throw err
-    }
 
 }
