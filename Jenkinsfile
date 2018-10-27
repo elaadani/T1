@@ -1,4 +1,4 @@
-django('django') {
+pipeline {
     currentBuild.result = "SUCCESS"
 
     try {
