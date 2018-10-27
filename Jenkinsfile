@@ -10,12 +10,12 @@ pipeline {
         }
         stage('Pull desde el repositorio git') {
             steps {
-                 sh './PullGit.sh'
+                 sh '/bin//PullGit.sh'
             }
         }
         stage('Construyendo una imagen de docker') {
             steps {
-                sh './DockerBuild.sh'
+                sh '/bin//DockerBuild.sh'
             }
         }
     }
