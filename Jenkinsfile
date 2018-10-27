@@ -5,7 +5,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Comprobando la instalación de git..'
-                sh 'git -v'
+                sh 'git --version'
             }
         }
         stage('Pull desde el repositorio git') {
