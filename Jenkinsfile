@@ -1,43 +1,46 @@
-django('django') {
-    currentBuild.result = "SUCCESS"
 
-    try {
+pipeline{
+	django('django') {
+	    currentBuild.result = "SUCCESS"
 
-       stage('Test'){
+	    try {
 
-         print "Comprobando la instalación de git"
+	       stage('Test'){
 
-         sh 'git -v'
+	         print "Comprobando la instalación de git"
 
-       }
+	         sh 'git -v'
 
-       stage('Pull desde el repositorio git'){
+	       }
 
-          sh './PullGit.sh'
+	       stage('Pull desde el repositorio git'){
 
-       }
+	          sh './PullGit.sh'
 
-       stage('Construyendo una imagen de docker'){
+	       }
 
-          sh './DockerBuild.sh'
-       }
+	       stage('Construyendo una imagen de docker'){
 
-       stage('Deploy'){
+	          sh './DockerBuild.sh'
+	       }
 
-         echo 'Push hacia Heroku'
-         sh './DockerPushHeroku.sh'
+	       stage('Deploy'){
 
-       }
+	         echo 'Push hacia Heroku'
+	         sh './DockerPushHeroku.sh'
 
-    }
+	       }
 
-    catch (err) {
+	    }
 
-        currentBuild.result = "FAILURE"
+	    catch (err) {
 
-        echo 'Error Build docker o Push heroku'
-       
-        throw err
-    }
+	        currentBuild.result = "FAILURE"
 
+	        echo 'Error Build docker o Push heroku'
+	       
+	        throw err
+	    }
+
+	}
 }
