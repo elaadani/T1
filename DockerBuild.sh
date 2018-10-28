@@ -1,4 +1,4 @@
-docker-machine env dev
+docker-machine start default
 cd django-ribbit/
 docker-compose build web
 cd ..
